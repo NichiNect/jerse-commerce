@@ -17,3 +17,4 @@ Auth::routes();
 
 Route::livewire('/', 'home')->name('home');
 Route::livewire('/products', 'product-index')->name('products.index');
+Route::livewire('/products/liga/{ligaID}', 'product-liga')->name('products.liga');

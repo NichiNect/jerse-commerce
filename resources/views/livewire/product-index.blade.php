@@ -11,9 +11,9 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row mt-2">
 			<div class="col-md-8">
-				<h3><b>List Jersey</b></h3>
+				<h3><b>{{ $title }}</b></h3>
 			</div>
 			<div class="col-md-4">
 				<div class="input-group mb-3">
@@ -41,7 +41,7 @@
 							</div>
 							<div class="row mt-2">
 								<div class="col-md">
-									<a href="" class="btn btn-dark btn-block">Detail</a>
+									<a href="" class="btn btn-dark btn-block"><i class="fas fa-eye"></i> Detail</a>
 								</div>
 							</div>
 						</div>

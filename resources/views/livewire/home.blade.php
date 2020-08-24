@@ -11,11 +11,13 @@
 			<div class="row mt-3">
 				@foreach($ligas as $liga)
 				<div class="col-md">
-					<div class="card my-2">
-						<div class="card-body text-center">
-							<img src="{{ asset('assets/liga') }}/{{ $liga->gambar }}" alt="liga" class="img-fluid">
-						</div>
-					</div>
+					<a href="{{ route('products.liga', $liga->id) }}">
+						<div class="card my-2">
+							<div class="card-body text-center">
+								<img src="{{ asset('assets/liga') }}/{{ $liga->gambar }}" alt="liga" class="img-fluid">
+							</div>
+						</div>	
+					</a>
 				</div>
 				@endforeach
 			</div>
@@ -23,7 +25,10 @@
 
 		<!-- Best Product -->
 		<section class="products mt-5" id="product">
-			<h3><b>Best Product</b></h3>
+			<h3>
+				<b>Best Product</b>
+				<a href="{{ route('products.index') }}" class="btn btn-dark float-right"><i class="fas fa-eye"></i> Tampilkan Semua</a>
+			</h3>
 			<div class="row mt-3">
 				@foreach($products as $product)
 				<div class="col-lg">
@@ -38,7 +43,7 @@
 							</div>
 							<div class="row mt-2">
 								<div class="col-md">
-									<a href="" class="btn btn-dark btn-block">Detail</a>
+									<a href="" class="btn btn-dark btn-block"><i class="fas fa-eye"></i> Detail</a>
 								</div>
 							</div>
 						</div>

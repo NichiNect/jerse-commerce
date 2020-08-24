@@ -28,6 +28,7 @@ class ProductIndex extends Component
 		}
 		return view('livewire.product-index', [
 			'products' => $products,
+			'title' => 'List Semua Jersey'
 		]);
 	}
 }
