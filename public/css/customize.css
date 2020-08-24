@@ -1,0 +1,19 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.banner img {
+	width: 100%;
+	border-radius: 15px;
+}
+
+.pilih-liga img {
+	max-height: 120px;
+}
+.pilih-liga .card {
+	border-radius: 15px;
+}
+
+.products .card {
+	border-radius: 15px;
+}
