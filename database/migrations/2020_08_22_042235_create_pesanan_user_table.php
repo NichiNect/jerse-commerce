@@ -15,7 +15,7 @@ class CreatePesananUserTable extends Migration
     {
         Schema::create('pesanan_user', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_pemesanan');
+            $table->string('kode_pemesanan')->nullable();
             $table->string('status')->default(0);
             $table->integer('total_harga');
             $table->integer('kode_unik');

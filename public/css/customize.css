@@ -17,3 +17,9 @@ body {
 .products .card {
 	border-radius: 15px;
 }
+
+.gambar-detail-product {
+	background-color: #eaeaea;
+	border-width: 0;
+	border-radius: 15px;
+}

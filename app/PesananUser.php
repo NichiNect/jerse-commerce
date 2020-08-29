@@ -8,6 +8,8 @@ class PesananUser extends Model
 {
     protected $table = 'pesanan_user';
 
+    protected $fillable = ['kode_pemesanan', 'status', 'total_harga', 'kode_unik', 'user_id'];
+
     /**
      * Relation One to Many with 'pesanan_detail' table
      */
