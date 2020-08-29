@@ -5,7 +5,7 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a></li>
-						<li class="breadcrumb-item" aria-current="page">List Jersey</li>
+						<li class="breadcrumb-item">List Jersey</li>
 						<li class="breadcrumb-item active" aria-current="page">Detail Jersey</li>
 					</ol>
 				</nav>
@@ -82,6 +82,9 @@
 										@enderror
 									</td>
 								</tr>
+								{{-- Check how many bid --}}
+								@if($jumlah_pesan > 1)
+								@else
 								<tr>
 									<td colspan="3">
 										<p><b>Name Set (isi jika anda ingin memesan jersey dengan nameset)</b></p>
@@ -114,6 +117,7 @@
 										@enderror
 									</td>
 								</tr>
+								@endif
 								<tr>
 									<td colspan="3">
 										<button type="submit" class="btn btn-dark btn-block"><i class="fas fa-shopping-cart mr-1" <?php if ($product->is_ready !== 1): ?> disabled <?php endif ?> ></i> Masukkan Keranjang</button>
