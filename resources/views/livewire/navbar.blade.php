@@ -33,7 +33,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('keranjang') }}">
-							Keranjang <i class="fas fa-shopping-bag"></i>
+							Keranjang <i class="fas fa-shopping-cart"></i>
 							@if($jumlah_pesanan !== 0)
 							<sup><span class="badge badge-danger">{{ $jumlah_pesanan }}</span></sup>
 							@endif

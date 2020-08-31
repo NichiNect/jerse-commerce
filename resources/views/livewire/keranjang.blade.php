@@ -35,7 +35,9 @@
 							<th scope="col">Name Set</th>
 							<th scope="col">Jumlah</th>
 							<th scope="col">Harga</th>
-							<th scope="col">Total</th>
+							<th scope="col">Total Harga</th>
+							<th scope="col"></th>
+
 						</tr>
 					</thead>
 					<tbody>
@@ -64,11 +66,16 @@
 							<td>
 								Rp. {{ number_format($pesanan_detail->total_harga) }}
 							</td>
+							<td>
+								<button wire:click.prevent="destroy({{ $pesanan_detail->id }})" class="btn btn-danger">
+									<i class="fa fa-trash"></i>
+								</button>
+							</td>
 						</tr>
 						@empty
 						<tr>
-							<td colspan="7">
-								Data Kosong
+							<td colspan="7" class="text-center">
+								<h3><b>Data Kosong</b></h3>
 							</td>
 						</tr>
 						@endforelse
@@ -92,11 +99,12 @@
 						<tr>
 							<td colspan="6"></td>
 							<td colspan="2">
-								<a href="#" class="btn btn-success btn-blok">
+								<a href="{{ route('checkout') }}" class="btn btn-success btn-blok">
 									<i class="fas fa-arrow-right"></i> Check Out
 								</a>
 							</td>
 						</tr>
+						
 						@endif
 					</tbody>
 				</table>

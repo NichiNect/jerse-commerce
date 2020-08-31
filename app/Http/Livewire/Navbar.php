@@ -23,6 +23,8 @@ class Navbar extends Component
 			$pesanan = PesananUser::where('user_id', Auth::user()->id)->where('status', 0)->first();
 			if ($pesanan) {
 				$this->jumlah = PesananDetail::where('pesanan_user_id', $pesanan->id)->count();
+			} else {
+				$this->jumlah = 0;
 			}
 		}
 	}
@@ -40,11 +42,11 @@ class Navbar extends Component
 		}
 	}
 
-    public function render()
-    {
-        return view('livewire.navbar', [
-        	'ligas' => Liga::get(),
-        	'jumlah_pesanan' => $this->jumlah,
-        ]);
-    }
+	public function render()
+	{
+		return view('livewire.navbar', [
+			'ligas' => Liga::get(),
+			'jumlah_pesanan' => $this->jumlah,
+		]);
+	}
 }
