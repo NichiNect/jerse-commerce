@@ -32,6 +32,11 @@
 				<!-- Right Side Of Navbar -->
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
+						<a class="nav-link" href="{{ route('history') }}">
+							History <i class="fas fa-history"></i>
+						</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="{{ route('keranjang') }}">
 							Keranjang <i class="fas fa-shopping-cart"></i>
 							@if($jumlah_pesanan !== 0)
