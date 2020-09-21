@@ -61,6 +61,12 @@
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							@if(Auth::user()->role == 'admin')
+							<a href="#" class="dropdown-item">Dashboard Admin</a>
+							@endif
+
+							<a href="{{ route('user.profile', Auth::user()->id) }}" class="dropdown-item">Profile</a>
+
 							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 								{{ __('Logout') }}
 							</a>
