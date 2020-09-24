@@ -62,7 +62,7 @@
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							@if(Auth::user()->role == 'admin')
-							<a href="#" class="dropdown-item">Dashboard Admin</a>
+							<a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard Admin</a>
 							@endif
 
 							<a href="{{ route('user.profile', Auth::user()->id) }}" class="dropdown-item">Profile</a>

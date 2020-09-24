@@ -23,3 +23,8 @@ Route::livewire('/keranjang', 'keranjang')->name('keranjang');
 Route::livewire('/checkout', 'checkout')->name('checkout')->middleware('auth');
 Route::livewire('/history', 'history')->name('history')->middleware('auth');
 Route::livewire('/user/profile/{id}', 'user.user-profile')->name('user.profile');
+
+
+Route::namespace('Admin')->middleware('auth')->group(function() {
+	Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
+});
