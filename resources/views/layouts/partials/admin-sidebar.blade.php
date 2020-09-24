@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
     <div class="sidebar-brand-icon">
       <i class="fab fa-laravel"></i>
     </div>
@@ -24,8 +24,24 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-    Interface
+    Users
   </div>
+
+  <!-- Nav Item - User Management -->
+  <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <i class="fas fa-fw fa-users"></i>
+      <span>User Management</span>
+    </a>
+    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">User Berdasarkan Role</h6>
+        <a class="collapse-item" href="{{ route('admin.users.index') }}">Semua User</a>
+        <a class="collapse-item" href="#">Role Admin</a>
+        <a class="collapse-item" href="#">Role Pengguna</a>
+      </div>
+    </div>
+  </li>
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
@@ -44,14 +60,14 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-    Addons
+    Logout
   </div>
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="">
-      <i class="fas fa-fw fa-chart-area"></i>
-      <span>Charts</span>
+    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-fw fa-sign-out-alt"></i>
+      <span>Logout</span>
     </a>
   </li>
 

@@ -27,4 +27,5 @@ Route::livewire('/user/profile/{id}', 'user.user-profile')->name('user.profile')
 
 Route::namespace('Admin')->middleware('auth')->group(function() {
 	Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
+	Route::get('admin/users', 'UserController@index')->name('admin.users.index');
 });

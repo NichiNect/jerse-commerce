@@ -16,7 +16,11 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="{{ asset('assets/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+  <!-- DataTables -->
+  <!-- <link rel="stylesheet" href="{{ asset('assets/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css') }}"> -->
+  <link rel="stylesheet" href="{{ asset('assets/sbadmin2/vendor/datatables/styleDatatables.min.css') }}">
 
 </head>
 
@@ -85,21 +89,35 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('assets/sbadmin/vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/sbadmin2/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="{{ asset('assets/sbadmin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('assets/sbadmin2/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="{{ asset('assets/sbadmin/js/sb-admin-2.min.js') }}"></script>
+  <script src="{{ asset('assets/sbadmin2/js/sb-admin-2.min.js') }}"></script>
+
+  <!-- DataTables() -->
+  <script src="{{ asset('assets/sbadmin2/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+  <script src="{{ asset('assets/sbadmin2/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"> -->
+  <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script> -->
+
+
+  @yield('scriptjs')
 
 </body>
 
