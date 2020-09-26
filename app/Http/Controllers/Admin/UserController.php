@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create-users');
     }
 
     /**
@@ -37,7 +37,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'password' => 'required|min:6',
+            'role' => 'required',
+            'email' => 'required',
+            'no_hp' => 'numeric'
+        ]);
+
+        $user = User::create([
+            'name' => $request->nama,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+        ]);
+
+        session()->flash('success', "Data telah berhasil Ditambahkan!");
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -83,5 +101,23 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * To get All data from table Users to ajax with \DataTables
+     */
+    public function getAllUsers()
+    {
+        $allUsers = User::select('users.*');
+
+        return \DataTables::eloquent($allUsers)
+        // ->addColumn('nomer', function($row) {
+        //     return $index++;
+        // })
+        ->addColumn('aksi', function($row) {
+            return view('admin.users.aksi-button');
+        })
+        ->rawColumns(['aksi'])
+        ->toJson();
     }
 }

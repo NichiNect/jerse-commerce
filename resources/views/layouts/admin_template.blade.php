@@ -20,7 +20,7 @@
 
   <!-- DataTables -->
   <!-- <link rel="stylesheet" href="{{ asset('assets/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css') }}"> -->
-  <link rel="stylesheet" href="{{ asset('assets/sbadmin2/vendor/datatables/styleDatatables.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/sbadmin2/vendor/datatables/datatables.min.css') }}">
 
 </head>
 
@@ -109,7 +109,7 @@
   <script src="{{ asset('assets/sbadmin2/js/sb-admin-2.min.js') }}"></script>
 
   <!-- DataTables() -->
-  <script src="{{ asset('assets/sbadmin2/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+  <script src="{{ asset('assets/sbadmin2/vendor/datatables/datatables.min.js') }}"></script>
   <script src="{{ asset('assets/sbadmin2/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 
 

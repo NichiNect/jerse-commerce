@@ -27,5 +27,10 @@ Route::livewire('/user/profile/{id}', 'user.user-profile')->name('user.profile')
 
 Route::namespace('Admin')->middleware('auth')->group(function() {
 	Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
-	Route::get('admin/users', 'UserController@index')->name('admin.users.index');
+	Route::middleware('auth')->group(function() {
+		Route::get('admin/users', 'UserController@index')->name('admin.users.index');
+		Route::get('/admin/users/tambah-user-baru', 'UserController@create')->name('admin.users.create');
+		Route::post('/admin/users/store', 'UserController@store')->name('admin.users.store');
+		Route::get('admin/get-users/ajax', 'UserController@getAllUsers')->name('admin.users.getajax');
+	});
 });

@@ -3,9 +3,32 @@
 @section('nama_user', auth()->user()->name)
 
 @section('content')
+<div class="row my-3">
+	<div class="col-md-6">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-users-cog"></i> Admin</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><i class="fas fa-users"></i> User Management</a></li>
+			</ol>
+		</nav>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-lg">
 		<h1>Data User JerseCommerce</h1>
+		@if (session('success'))
+		<div class="alert alert-success my-3">
+			{{ session('success') }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		@endif
+
+		<a href="{{ route('admin.users.create') }}" class="btn btn-outline-primary my-3">
+			<i class="fas fa-user-plus"></i> Tambah User Baru
+		</a>
 	</div>
 </div>
 
@@ -29,16 +52,7 @@
 						<?php $i=0; ?>
 						@foreach($users as $user)
 						<tr>
-							<th scope="row">{{ $i++ }}</th>
-							<td>{{ $user->name }}</td>
-							<td>{{ $user->role }}</td>
-							<td>{{ $user->email }}</td>
-							<td>{{ $user->no_hp }}</td>
-							<td>
-								<a href="#" class="btn btn-success"><i class="fas fa-user"></i> Detail</a>
-								<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
-								<a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
-							</td>
+							
 						</tr>
 						@endforeach
 					</tbody>
@@ -53,6 +67,18 @@
 
 @section('scriptjs')
 <script>
-	$('#tableUser').DataTable();
+	$('#tableUser').DataTable({
+		processing: true,
+		serverside: true,
+		ajax: "{{ route('admin.users.getajax') }}",
+		columns: [
+		{data: 'id', name: 'id'},
+		{data: 'name', name: 'nama'},
+		{data: 'role', name: 'role'},
+		{data: 'email', name: 'email'},
+		{data: 'no_hp', name: 'no_hp'},
+		{data: 'aksi', name: 'aksi'},
+		]
+	});
 </script>
 @endsection

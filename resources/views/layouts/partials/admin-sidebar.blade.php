@@ -28,7 +28,7 @@
   </div>
 
   <!-- Nav Item - User Management -->
-  <li class="nav-item active">
+  <li class="nav-item">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
       <i class="fas fa-fw fa-users"></i>
       <span>User Management</span>
