@@ -61,35 +61,53 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit-users', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'role' => 'required',
+            'email' => 'required',
+            'no_hp' => 'numeric'
+        ]);
+
+        $user = User::where('id', $user->id)
+        ->update([
+            'name' => $request->nama,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+        ]);
+
+        session()->flash('success', "Data telah berhasil Diedit!");
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -100,7 +118,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        session()->flash('success', "Data telah berhasil Dihapus!");
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -115,7 +135,7 @@ class UserController extends Controller
         //     return $index++;
         // })
         ->addColumn('aksi', function($row) {
-            return view('admin.users.aksi-button');
+            return view('admin.users.aksi-button', compact('row'));
         })
         ->rawColumns(['aksi'])
         ->toJson();

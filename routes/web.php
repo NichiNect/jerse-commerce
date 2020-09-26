@@ -31,6 +31,10 @@ Route::namespace('Admin')->middleware('auth')->group(function() {
 		Route::get('admin/users', 'UserController@index')->name('admin.users.index');
 		Route::get('/admin/users/tambah-user-baru', 'UserController@create')->name('admin.users.create');
 		Route::post('/admin/users/store', 'UserController@store')->name('admin.users.store');
+		Route::get('/admin/users/{user}/edit', 'UserController@edit')->name('admin.users.edit');
+		Route::patch('/admin/users/{user}/update', 'UserController@update')->name('admin.users.update');
+		Route::delete('/admin/users/{id}/delete', 'UserController@destroy')->name('admin.users.delete');
+		Route::get('/admin/users/{user}/show', 'UserController@show')->name('admin.users.show');
 		Route::get('admin/get-users/ajax', 'UserController@getAllUsers')->name('admin.users.getajax');
 	});
 });

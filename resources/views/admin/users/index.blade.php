@@ -65,20 +65,44 @@
 
 @endsection
 
+@include('layouts.partials.modal')
+
 @section('scriptjs')
 <script>
-	$('#tableUser').DataTable({
-		processing: true,
-		serverside: true,
-		ajax: "{{ route('admin.users.getajax') }}",
-		columns: [
-		{data: 'id', name: 'id'},
-		{data: 'name', name: 'nama'},
-		{data: 'role', name: 'role'},
-		{data: 'email', name: 'email'},
-		{data: 'no_hp', name: 'no_hp'},
-		{data: 'aksi', name: 'aksi'},
-		]
+	$(document).ready(function() {
+		$('#tableUser').DataTable({
+			processing: true,
+			serverside: true,
+			ajax: "{{ route('admin.users.getajax') }}",
+			columns: [
+			{data: 'id', name: 'id'},
+			{data: 'name', name: 'nama'},
+			{data: 'role', name: 'role'},
+			{data: 'email', name: 'email'},
+			{data: 'no_hp', name: 'no_hp'},
+			{data: 'aksi', name: 'aksi'},
+			]
+		});
+
+		$('.table').on('click', '#showDetailUser', function(e) {
+			e.preventDefault();
+
+			const tombol = $(this);
+			const url = tombol.attr('href');
+
+			$.ajax({
+				url: url,
+				dataType: 'html',
+				method: 'get',
+				success: function(res) {
+					$('.modal-body').html(res);
+				}
+			});
+
+			$('.modal-title').html('Detail User');
+			$('.modal #ok').remove();
+			$('#componentModal').modal('show');
+		});
 	});
 </script>
 @endsection
