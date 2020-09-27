@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use \App\User;
 
 class UserController extends Controller
@@ -14,9 +15,19 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $users = User::get();
-        return view('admin.users.index', compact('users'));
+    {   
+        if(isset($_GET['role'])) {
+            if ($_GET['role'] == 'admin') {
+                $users = User::where('role', 'admin')->get();
+                return view('admin.users.index1', compact('users'));
+            } else if($_GET['role'] == 'user') {
+                $users = User::where('role', 'user')->get();
+                return view('admin.users.index2', compact('users'));
+            }
+        } else {
+            $users = User::get();
+            return view('admin.users.index', compact('users'));
+        }
     }
 
     /**
@@ -124,16 +135,96 @@ class UserController extends Controller
     }
 
     /**
+     * Method to change password from admin panel
+     * @param  \App\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function changepassword(User $user)
+    {
+        return view('admin.users.changepassword-user', compact('user'));
+    }
+
+    /**
+     * Method to handle the PUT Http Request from changepassword()
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function putChangePassword(Request $request, User $user)
+    {
+        $request->validate([
+            'password_lama' => 'required',
+            'new_password' => 'required',
+            'repeat_password' => 'required|same:new_password',
+        ]);
+
+        if(Hash::check($request->password_lama, $user->password)){
+
+            $changePassword = User::where('id', $user->id)->update([
+                'password' => bcrypt($request->new_password),
+            ]);
+
+            session()->flash('success', "Password telah berhasil di ubah!");
+            return redirect()->route('admin.users.index');
+        } else {
+            session()->flash('password_salah', "Password lama salah!");
+            return redirect()->back();
+        }
+    }
+
+    /**
      * To get All data from table Users to ajax with \DataTables
+     * @return json type for ajax
      */
     public function getAllUsers()
     {
-        $allUsers = User::select('users.*');
+        if(isset($_GET['role'])) {
+            if ($_GET['role'] == 'admin') {
+                $allUsers = User::select('users.*')->where('role', 'admin');
+            } else if($_GET['role'] == 'user') {
+                $allUsers = User::select('users.*')->where('role', 'user');
+            }
+        } else {
+            $allUsers = User::select('users.*');
+        }
 
         return \DataTables::eloquent($allUsers)
         // ->addColumn('nomer', function($row) {
         //     return $index++;
         // })
+        ->addColumn('aksi', function($row) {
+            return view('admin.users.aksi-button', compact('row'));
+        })
+        ->rawColumns(['aksi'])
+        ->toJson();
+    }
+
+    /**
+     * To get data user role Admin from table Users to ajax with \DataTables
+     * @return json type for ajax
+     */
+    public function getAdminRoleUsers()
+    {
+        $usersRoleAdmin = User::select('users.*')->where('role', 'admin');
+
+        return \DataTables::eloquent($usersRoleAdmin)
+        ->addColumn('aksi', function($row) {
+            return view('admin.users.aksi-button', compact('row'));
+        })
+        ->rawColumns(['aksi'])
+        ->toJson();
+    }
+
+    /**
+     * To get data user role User from table Users to ajax with \DataTables
+     * @return json type for ajax
+     */
+    public function getUserRoleUsers()
+    {
+        $usersRoleUser = User::select('users.*')->where('role', 'user');
+
+        return \DataTables::eloquent($usersRoleUser)
+        ->addIndexColumn()
         ->addColumn('aksi', function($row) {
             return view('admin.users.aksi-button', compact('row'));
         })

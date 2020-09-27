@@ -37,8 +37,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">User Berdasarkan Role</h6>
         <a class="collapse-item" href="{{ route('admin.users.index') }}">Semua User</a>
-        <a class="collapse-item" href="#">Role Admin</a>
-        <a class="collapse-item" href="#">Role Pengguna</a>
+        <a class="collapse-item" href="{{ route('admin.users.index') }}?role=admin">Role Admin</a>
+        <a class="collapse-item" href="{{ route('admin.users.index') }}?role=user">Role Pengguna</a>
       </div>
     </div>
   </li>

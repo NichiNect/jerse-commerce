@@ -27,6 +27,7 @@ Route::livewire('/user/profile/{id}', 'user.user-profile')->name('user.profile')
 
 Route::namespace('Admin')->middleware('auth')->group(function() {
 	Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
+	// users 
 	Route::middleware('auth')->group(function() {
 		Route::get('admin/users', 'UserController@index')->name('admin.users.index');
 		Route::get('/admin/users/tambah-user-baru', 'UserController@create')->name('admin.users.create');
@@ -35,6 +36,10 @@ Route::namespace('Admin')->middleware('auth')->group(function() {
 		Route::patch('/admin/users/{user}/update', 'UserController@update')->name('admin.users.update');
 		Route::delete('/admin/users/{id}/delete', 'UserController@destroy')->name('admin.users.delete');
 		Route::get('/admin/users/{user}/show', 'UserController@show')->name('admin.users.show');
-		Route::get('admin/get-users/ajax', 'UserController@getAllUsers')->name('admin.users.getajax');
+		Route::get('/admin/users/{user}/change-password', 'UserController@changepassword')->name('admin.users.changepassword');
+		Route::put('/admin/users/{user}/changepassword', 'UserController@putChangePassword')->name('admin.users.putchangepassword');
+		Route::get('admin/get-all-users/ajax', 'UserController@getAllUsers')->name('admin.users.getajax');
+		Route::get('admin/get-role-admin/ajax', 'UserController@getAdminRoleUsers')->name('admin.users.getajaxadmin');
+		Route::get('admin/get-role-user/ajax', 'UserController@getUserRoleUsers')->name('admin.users.getajaxuser');
 	});
 });

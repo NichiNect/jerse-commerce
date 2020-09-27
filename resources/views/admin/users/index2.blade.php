@@ -16,7 +16,7 @@
 
 <div class="row">
 	<div class="col-lg">
-		<h1>Data User JerseCommerce</h1>
+		<h1>Data User Role Admin JerseCommerce</h1>
 		@if (session('success'))
 		<div class="alert alert-success my-3">
 			{{ session('success') }}
@@ -73,7 +73,7 @@
 		$('#tableUser').DataTable({
 			processing: true,
 			serverside: true,
-			ajax: "{{ route('admin.users.getajax') }}",
+			ajax: "{{ route('admin.users.getajaxuser') }}",
 			columns: [
 				{data: 'id', name: 'id'},
 				{data: 'name', name: 'nama'},

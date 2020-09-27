@@ -8,8 +8,8 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-users-cog"></i> Admin</a></li>
-				<li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}"><i class="fas fa-users-cog"></i> User Management</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><i class="fas fa-user-plus"></i> Edit User</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}"><i class="fas fa-user-cog"></i> User Management</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><i class="fas fa-user-edit"></i> Edit User</a></li>
 			</ol>
 		</nav>
 	</div>
@@ -18,7 +18,7 @@
 <div class="row">
 	<div class="col-lg">
 		<h1>Form Edit User : {{ $user->name }}</h1>
-		<small><i>Joined : {{ $user->updated_at->diffForHumans() }}, {{ $user->updated_at }}</i></small>
+		<small><i>Joined : {{ $user->created_at->diffForHumans() }}, {{ $user->created_at }}</i></small>
 		<br>
 		<small><i>Last updated : {{ $user->updated_at->diffForHumans() }}, {{ $user->updated_at }}</i></small>
 	</div>
@@ -80,7 +80,7 @@
 					<div class="form-group text-left">
 					</div>
 					<div class="form-group text-right">
-						<a href="#" class="btn btn-outline-primary mx-3">Ingin mengganti Password?</a>
+						<a href="{{ route('admin.users.changepassword', $user) }}" class="btn btn-outline-primary mx-3">Ingin mengganti Password?</a>
 						<button type="submit" name="submit" class="btn btn-outline-success">Edit data akun!</button>
 					</div>
 				</form>
