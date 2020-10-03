@@ -43,6 +43,22 @@
     </div>
   </li>
 
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Products
+  </div>
+
+  <!-- Nav Item - Products -->
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.products.index') }}">
+      <i class="fas fa-fw fa-tshirt"></i>
+      <span>Products JerseCommerce</span>
+    </a>
+  </li>
+
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">

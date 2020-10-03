@@ -29,7 +29,7 @@
 			<div class="col-md-6">
 				<div class="card gambar-detail-product">
 					<div class="card-body">
-						<img src="{{ asset('assets/jersey') }}/{{ $product->gambar }}" alt="liga" class="img-fluid">
+						<img src="{{ $product->TakeJerseyImage }}" alt="liga" class="img-fluid">
 					</div>
 				</div>
 			</div>
@@ -56,7 +56,7 @@
 									<td>Liga</td>
 									<td>:</td>
 									<td>
-										<img src="{{ asset('assets/liga') }}/{{ $product->liga->gambar }}" alt="liga" class="img-fluid" width="70">
+										<img src="{{ $product->liga->TakeLigaImage }}" alt="liga" class="img-fluid" width="70">
 									</td>
 								</tr>
 								<tr>

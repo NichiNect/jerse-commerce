@@ -9,6 +9,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-    	return view('admin.dashboard-admin');
+    	$totalUser = \App\User::count();
+    	$pesananUser = \App\PesananUser::get();
+    	$products = \App\Product::count();
+    	return view('admin.dashboard-admin', [
+    		'totalUser' => $totalUser,
+    		'pesananUser' => $pesananUser,
+    		'products' => $products,
+    	]);
     }
 }

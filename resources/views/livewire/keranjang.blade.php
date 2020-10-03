@@ -46,7 +46,7 @@
 						<tr>
 							<th scope="row">{{ $i++ }}</th>
 							<td>
-								<img src="{{ url('assets/jersey') }}/{{ $pesanan_detail->product->gambar }}" alt="thumb jersey" class="img-fluid" width="200">
+								<img src="{{ url('/storage/images/jersey') }}/{{ $pesanan_detail->product->gambar }}" alt="thumb jersey" class="img-fluid" width="200">
 							</td>
 							<td>
 								{{ $pesanan_detail->product->nama }}

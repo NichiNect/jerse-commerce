@@ -2,7 +2,7 @@
 	<div class="container">
 		<!-- Banner Slider -->
 		<div class="banner">
-			<img src="{{ asset('assets/slider/jumbotron-jersecommerce.png') }}">
+			<img src="{{ asset('assets/slider/jumbotron-jersecommerce-1933.png') }}">
 		</div>
 
 		<!-- Pilihan Liga -->
@@ -14,7 +14,7 @@
 					<a href="{{ route('products.liga', $liga->id) }}">
 						<div class="card my-2">
 							<div class="card-body text-center">
-								<img src="{{ asset('assets/liga') }}/{{ $liga->gambar }}" alt="liga" class="img-fluid">
+								<img src="{{ $liga->TakeLigaImage }}" alt="liga" class="img-fluid">
 							</div>
 						</div>	
 					</a>
@@ -34,7 +34,7 @@
 				<div class="col-lg">
 					<div class="card my-2">
 						<div class="card-body text-center">
-							<img src="{{ asset('assets/jersey') }}/{{ $product->gambar }}" alt="liga" class="img-fluid">
+							<img src="{{ $product->TakeJerseyImage }}" alt="liga" class="img-fluid">
 							<div class="row">
 								<div class="col-md">
 									<h5><b>{{ $product->nama }}</b></h5>

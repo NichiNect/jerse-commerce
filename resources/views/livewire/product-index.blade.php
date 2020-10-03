@@ -32,7 +32,7 @@
 				<div class="col-lg-3">
 					<div class="card my-2">
 						<div class="card-body text-center">
-							<img src="{{ asset('assets/jersey') }}/{{ $product->gambar }}" alt="liga" class="img-fluid">
+							<img src="{{ $product->TakeJerseyImage }}" alt="liga" class="img-fluid">
 							<div class="row">
 								<div class="col-md">
 									<h5><b>{{ $product->nama }}</b></h5>

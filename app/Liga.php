@@ -15,4 +15,12 @@ class Liga extends Model
 	{
 		return $this->hasMany(Product::class, 'liga_id', 'id');
 	}
+
+	/**
+    * Method to take image with symbolic link from /storage
+    */
+	public function getTakeLigaImageAttribute()
+    {
+        return '/storage/images/liga/' . $this->gambar;
+    }
 }

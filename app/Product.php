@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'nama',
+        'harga',
+        'harga_nameset',
+        'is_ready',
+        'jenis',
+        'berat',
+        'gambar',
+        'liga_id'
+    ];
 
     /**
      * Relation Many to One with 'liga' table
@@ -22,4 +32,12 @@ class Product extends Model
     {
         return $this->hasMany(PesananDetail::class, 'product_id', 'id');
     }
+
+    /**
+    * Method to take image with symbolic link from /storage
+    */
+    public function getTakeJerseyImageAttribute() {
+        return '/storage/images/jersey/' . $this->gambar;
+    }
+
 }
