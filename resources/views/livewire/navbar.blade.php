@@ -44,6 +44,7 @@
 							@endif
 						</a>
 					</li>
+					<div class="topbar-divider d-none d-sm-block"></div>
 					<!-- Authentication Links -->
 					@guest
 					<li class="nav-item">

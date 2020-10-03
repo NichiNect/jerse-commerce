@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Product;
+use Str;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -53,7 +55,7 @@ class ProductController extends Controller
         if ($request->hasFile('gambar')) {
             $photo = $request->file('gambar');
             $image_extension = $photo->extension();
-            $image_name = \Str::slug($request->nama) . '-' . time() . "." . $image_extension;
+            $image_name = Str::slug($request->nama) . '-' . time() . "." . $image_extension;
             $photo->storeAs('/images/jersey/', $image_name, 'public');
         }
 
@@ -122,10 +124,10 @@ class ProductController extends Controller
         $product->jenis = $request->jenis;
         $product->berat = $request->berat;
         if($request->hasFile('gambar')) {
-            \Storage::delete('public/images/jersey/'.$product->gambar);
+            Storage::delete('public/images/jersey/'.$product->gambar);
             $photo = $request->file('gambar');
             $image_extension = $photo->extension();
-            $image_name = \Str::slug($request->nama) . '-' . time() . "." . $image_extension;
+            $image_name = Str::slug($request->nama) . '-' . time() . "." . $image_extension;
             $photo->storeAs('/images/jersey', $image_name, 'public');
             $product->gambar = $image_name;
         }
@@ -144,7 +146,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        Storage::delete('public/images/jersey/'.$product->gambar);
+        $product->delete();
+
+        session()->flash('success', "Data telah berhasil di Hapus!");
+        return redirect()->route('admin.products.index');
     }
 
     /**

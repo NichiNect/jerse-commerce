@@ -50,6 +50,7 @@ Route::namespace('Admin')->middleware('auth')->group(function() {
 		Route::post('/admin/products/tambah-product', 'ProductController@store')->name('admin.products.store');
 		Route::get('/admin/products/{product}/edit-product', 'ProductController@edit')->name('admin.products.edit');
 		Route::patch('/admin/products/{id}/edit-product', 'ProductController@update')->name('admin.products.update');
+		Route::delete('/admin/products/{id}/delete', 'ProductController@destroy')->name('admin.products.delete');
 		Route::get('admin/get-all-products/ajax', 'ProductController@getAllProducts')->name('admin.products.getajax');
 	});
 });

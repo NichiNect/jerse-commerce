@@ -56,6 +56,16 @@
 						{{ $product->liga->nama }}
 					</td>
 				</tr>
+				<tr>
+					<th scope="row">Last Updated</th>
+					<td>
+						@if($product->updated_at == null)
+						<small class="text-muted"><i>Last Update : -</i></small>
+						@else
+						<small class="text-muted"><i>Last Update : {{ $product->updated_at->diffForHumans() }}, {{ $product->updated_at }}</i></small>
+						@endif
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
