@@ -53,6 +53,11 @@ Route::namespace('Admin')->middleware('auth')->group(function() {
 		Route::delete('/admin/products/{id}/delete', 'ProductController@destroy')->name('admin.products.delete');
 		Route::get('admin/get-all-products/ajax', 'ProductController@getAllProducts')->name('admin.products.getajax');
 	});
+	// pesanan
+	Route::namespace('Pesanan')->middleware('auth')->group(function() {
+		Route::get('/admin/pesanan/user', 'PesananUserController@index')->name('admin.pesananuser');
+		Route::patch('/admin/pesanan/{id}/confirm', 'PesananUserController@confirm')->name('admin.pesananuser.confirm');
+	});
 });
 
 use \App\{User,PesananUser,PesananDetail};

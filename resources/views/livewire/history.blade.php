@@ -54,11 +54,9 @@
 						</td>
 						<td>
 							@if($pesanan->status == 1)
-							Belum Lunas
+							Belum Lunas atau Menunggu Konfirmasi Admin
 							@elseif($pesanan->status == 2)
-							Sedang Diproses
-							@elseif($pesanan->status == 3)
-							Sedang Dikirim
+							Pesanan Terkonfirmasi dan Proses Kirim
 							@else
 							Lunas
 							@endif
