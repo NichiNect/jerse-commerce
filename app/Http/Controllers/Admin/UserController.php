@@ -231,4 +231,31 @@ class UserController extends Controller
         ->rawColumns(['aksi'])
         ->toJson();
     }
+
+    /**
+     * Profile Management
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $user = User::findOrFail(auth()->user()->id);
+
+        return view('admin.users.profile.profile', compact('user'));
+    }
+    /**
+     * Profile Management
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function editProfile(Request $r)
+    {
+        $user = User::findOrFail(auth()->user()->id)->update([
+            'name' => $r->nama,
+            'alamat' => $r->alamat,
+            'no_hp' => $r->no_hp,
+        ]);
+
+        return redirect()->route('admin.profile')->with('success', "Data profile berhasil diedit!");
+    }
 }

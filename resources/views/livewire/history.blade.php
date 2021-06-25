@@ -58,7 +58,7 @@
 							@elseif($pesanan->status == 2)
 							Pesanan Terkonfirmasi dan Proses Kirim
 							@else
-							Lunas
+							Transaksi Selesai
 							@endif
 						</td>
 						<td>{{ $pesanan->created_at }}</td>

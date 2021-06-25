@@ -75,6 +75,14 @@
     </a>
   </li>
 
+  <!-- Nav Item - Products -->
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.logpesanan') }}">
+      <i class="fas fa-fw fa-history"></i>
+      <span>Log Pesanan</span>
+    </a>
+  </li>
+
   <!-- Heading -->
   <div class="sidebar-heading">
     Logout

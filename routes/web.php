@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::namespace('Admin')->middleware('auth')->group(function() {
 		Route::get('admin/get-all-users/ajax', 'UserController@getAllUsers')->name('admin.users.getajax');
 		Route::get('admin/get-role-admin/ajax', 'UserController@getAdminRoleUsers')->name('admin.users.getajaxadmin');
 		Route::get('admin/get-role-user/ajax', 'UserController@getUserRoleUsers')->name('admin.users.getajaxuser');
+		// profile management
+		Route::get('/admin/profile', 'UserController@profile')->name('admin.profile');
+		Route::put('/admin/edit-profile', 'UserController@editProfile')->name('admin.editprofile');
 	});
 	// products
 	Route::middleware('auth')->group(function() {
@@ -57,12 +61,7 @@ Route::namespace('Admin')->middleware('auth')->group(function() {
 	Route::namespace('Pesanan')->middleware('auth')->group(function() {
 		Route::get('/admin/pesanan/user', 'PesananUserController@index')->name('admin.pesananuser');
 		Route::patch('/admin/pesanan/{id}/confirm', 'PesananUserController@confirm')->name('admin.pesananuser.confirm');
+		Route::get('/admin/log-pesanan', 'PesananUserController@logPesanan')->name('admin.logpesanan');
+		Route::get('/admin/log-pesanan/{kode}/detail', 'PesananUserController@detailLogPesanan')->name('admin.detaillogpesanan');
 	});
-});
-
-use \App\{User,PesananUser,PesananDetail};
-Route::get('/tesrelasi', function() {
-	$user = User::find(1);
-	echo $user->pesanan_users;
-	$pesananUser = PesananUser::find(7);
 });
